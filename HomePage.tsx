@@ -3,8 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const heroGradient = "bg-gradient-to-br from-pink-100 via-fuchsia-100 to-pink-50";
-
+/* --- Data --- */
 const products = [
   {
     name: "Lonz Flawls Aura Extra Glow Soap",
@@ -26,20 +25,17 @@ const products = [
 const testimonials = [
   {
     name: "Amara, Lagos",
-    quote:
-      "Lonz Flawls Aura transformed my skin! I feel confident, radiant, and truly seen. The glow is real ✨",
+    quote: "Lonz Flawls Aura transformed my skin! I feel confident, radiant, and truly seen. The glow is real ✨",
     image: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
     name: "Zuri, Nairobi",
-    quote:
-      "A luxury experience from start to finish. My skin has never been softer or more luminous.",
+    quote: "A luxury experience from start to finish. My skin has never been softer or more luminous.",
     image: "https://randomuser.me/api/portraits/women/65.jpg",
   },
   {
     name: "Sade, Accra",
-    quote:
-      "The Glow Lotion is a game-changer. Even my friends can’t stop complimenting my radiance!",
+    quote: "The Glow Lotion is a game-changer. Even my friends can’t stop complimenting my radiance!",
     image: "https://randomuser.me/api/portraits/women/62.jpg",
   },
 ];
@@ -49,31 +45,33 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-pink-50 via-fuchsia-50 to-white overflow-x-hidden flex flex-col items-center">
+
       {/* HERO SECTION */}
-      <section className={`w-full pt-14 pb-20 px-4 relative ${heroGradient}`}>
+      <section className="relative overflow-hidden min-h-[68vh] flex flex-col items-center justify-center text-center py-20 px-4 w-full bg-gradient-to-br from-pink-100 via-fuchsia-50 to-pink-50">
+        {/* Aura Glows */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[60vw] bg-pink-200 opacity-25 rounded-full blur-3xl" />
+          <div className="absolute bottom-[-8%] right-[-8%] w-[40vw] h-[28vw] bg-fuchsia-300 opacity-20 rounded-full blur-2xl" />
+        </div>
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="max-w-5xl mx-auto text-center relative z-10"
+          transition={{ duration: 1.1, ease: "easeOut" }}
+          className="relative z-10"
         >
-          <h1 className="text-6xl md:text-7xl font-extrabold text-pink-700 tracking-tight drop-shadow-lg mb-6 font-serif">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight text-pink-700 mb-6 font-serif drop-shadow-lg">
             Lonz Flawls Aura
           </h1>
-          <p className="max-w-2xl mx-auto text-2xl text-gray-700 mb-8 leading-tight font-medium">
-            Glow Beyond Expectations — Skincare Rooted in Confidence, Luxury, and African Radiance.
+          <p className="max-w-2xl mx-auto text-2xl md:text-3xl text-gray-700 mb-10 font-medium leading-tight">
+            Experience the luxury of radiant, flawless skin. <span className="text-fuchsia-600 font-bold">Glow Beyond Expectations.</span>
           </p>
-          <Button className="bg-gradient-to-r from-pink-600 to-fuchsia-500 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-full text-xl font-bold shadow-xl transition">
+          <a
+            href="/shop"
+            className="inline-block bg-gradient-to-r from-pink-600 to-fuchsia-500 text-white px-10 py-5 rounded-full text-xl font-bold shadow-lg hover:from-fuchsia-500 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-fuchsia-300 transition"
+          >
             Shop Now
-          </Button>
+          </a>
         </motion.div>
-        {/* Ambient Glow SVG */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <svg className="absolute left-1/2 top-0 -translate-x-1/2" width="900" height="320" viewBox="0 0 900 320" fill="none">
-            <ellipse cx="450" cy="180" rx="410" ry="100" fill="#f9a8d4" fillOpacity="0.18"/>
-            <ellipse cx="450" cy="160" rx="300" ry="80" fill="#f472b6" fillOpacity="0.12"/>
-          </svg>
-        </div>
       </section>
 
       {/* PRODUCTS */}
