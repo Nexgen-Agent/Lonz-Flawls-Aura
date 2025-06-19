@@ -1,66 +1,173 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
-export default function HomePage() {
-  return (
-    <main className="min-h-screen bg-gradient-to-br from-pink-50 to-white px-4 py-10 text-center">
-      <motion.div
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto"
-      >
-        <h1 className="text-5xl font-extrabold text-pink-600 tracking-tight mb-4">
-          Lonz Flawless Aura
-        </h1>
-        <p className="text-lg text-gray-600 mb-6">
-          Glow Beyond Expectations — Skincare Rooted in Confidence, Luxury, and African Radiance.
-        </p>
-        <Button className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-2xl text-lg">
-          Shop Now
-        </Button>
-      </motion.div>
-
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-6xl mx-auto">
-        {products.map((product, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <Card className="rounded-2xl shadow-xl overflow-hidden border-none">
-              <img src={product.image} alt={product.name} className="h-60 w-full object-cover" />
-              <CardContent className="p-4">
-                <h3 className="text-xl font-semibold text-pink-600 mb-2">{product.name}</h3>
-                <p className="text-sm text-gray-600 mb-4">{product.description}</p>
-                <Button className="bg-pink-500 hover:bg-pink-600 text-white w-full py-2 rounded-xl">
-                  Buy Now
-                </Button>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </section>
-    </main>
-  );
-}
+const heroGradient = "bg-gradient-to-br from-pink-100 via-fuchsia-100 to-pink-50";
 
 const products = [
   {
-    name: "Lonia’s Extra Glow Soap",
-    description: "Brightens, fades marks, hydrates and smoothens. Tumeric + Vitamin C formula.",
-    image: "https://example.com/glow-soap.jpg",
+    name: "Lonz Flawls Aura Extra Glow Soap",
+    description: "Brightens, fades marks, hydrates and smoothens. Turmeric + Vitamin C formula.",
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Lonia’s Whitening Cream",
+    name: "Lonz Flawls Aura Whitening Cream",
     description: "Fights acne, dark spots, pigmentation and aging with Glutathione + Collagen.",
-    image: "https://example.com/whitening-cream.jpg",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Lonia’s Glow Lotion",
+    name: "Lonz Flawls Aura Glow Lotion",
     description: "Hydrates, heals scars and stretch marks. With Vitamin C + glycerin. 250g size.",
-    image: "https://example.com/glow-lotion.jpg",
+    image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
   },
 ];
+
+const testimonials = [
+  {
+    name: "Amara, Lagos",
+    quote:
+      "Lonz Flawls Aura transformed my skin! I feel confident, radiant, and truly seen. The glow is real ✨",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
+  },
+  {
+    name: "Zuri, Nairobi",
+    quote:
+      "A luxury experience from start to finish. My skin has never been softer or more luminous.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+  },
+  {
+    name: "Sade, Accra",
+    quote:
+      "The Glow Lotion is a game-changer. Even my friends can’t stop complimenting my radiance!",
+    image: "https://randomuser.me/api/portraits/women/62.jpg",
+  },
+];
+
+export default function HomePage() {
+  const [highlightIndex, setHighlightIndex] = useState<number | null>(null);
+
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-pink-50 via-fuchsia-50 to-white overflow-x-hidden flex flex-col items-center">
+      {/* HERO SECTION */}
+      <section className={`w-full pt-14 pb-20 px-4 relative ${heroGradient}`}>
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="max-w-5xl mx-auto text-center relative z-10"
+        >
+          <h1 className="text-6xl md:text-7xl font-extrabold text-pink-700 tracking-tight drop-shadow-lg mb-6 font-serif">
+            Lonz Flawls Aura
+          </h1>
+          <p className="max-w-2xl mx-auto text-2xl text-gray-700 mb-8 leading-tight font-medium">
+            Glow Beyond Expectations — Skincare Rooted in Confidence, Luxury, and African Radiance.
+          </p>
+          <Button className="bg-gradient-to-r from-pink-600 to-fuchsia-500 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-full text-xl font-bold shadow-xl transition">
+            Shop Now
+          </Button>
+        </motion.div>
+        {/* Ambient Glow SVG */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <svg className="absolute left-1/2 top-0 -translate-x-1/2" width="900" height="320" viewBox="0 0 900 320" fill="none">
+            <ellipse cx="450" cy="180" rx="410" ry="100" fill="#f9a8d4" fillOpacity="0.18"/>
+            <ellipse cx="450" cy="160" rx="300" ry="80" fill="#f472b6" fillOpacity="0.12"/>
+          </svg>
+        </div>
+      </section>
+
+      {/* PRODUCTS */}
+      <section className="w-full max-w-7xl px-4 mx-auto mt-[-4rem] mb-24 z-10 relative">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl md:text-4xl font-bold text-pink-600 text-center mb-12 font-serif"
+        >
+          Discover Your Glow Ritual
+        </motion.h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          {products.map((product, i) => (
+            <motion.div
+              key={product.name}
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{
+                scale: 1.04,
+                boxShadow: "0 8px 32px 0 rgba(249, 168, 212,0.22)",
+              }}
+              onMouseEnter={() => setHighlightIndex(i)}
+              onMouseLeave={() => setHighlightIndex(null)}
+              className={`rounded-3xl overflow-hidden shadow-xl bg-white transition-all border-2 ${
+                highlightIndex === i
+                  ? "border-fuchsia-400"
+                  : "border-transparent"
+              }`}
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-72 w-full object-cover"
+                loading="lazy"
+              />
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-pink-700 mb-1 font-serif">
+                  {product.name}
+                </h3>
+                <p className="text-gray-600 mb-4">{product.description}</p>
+                <Button className="bg-gradient-to-r from-pink-500 to-fuchsia-500 hover:from-fuchsia-500 hover:to-pink-600 text-white w-full py-3 rounded-xl font-semibold text-base shadow">
+                  Buy Now
+                </Button>
+              </CardContent>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="w-full max-w-6xl mx-auto px-4 mb-28">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl font-bold text-fuchsia-600 text-center mb-14 font-serif"
+        >
+          Stories of Radiance
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {testimonials.map((t, idx) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.12 }}
+              className="bg-white rounded-3xl shadow-lg p-8 flex flex-col items-center"
+            >
+              <img
+                src={t.image}
+                alt={t.name}
+                className="w-20 h-20 rounded-full border-4 border-fuchsia-200 mb-4 object-cover shadow"
+              />
+              <p className="text-fuchsia-700 text-lg italic mb-3 text-center">“{t.quote}”</p>
+              <span className="font-semibold text-pink-700">{t.name}</span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* CALL TO ACTION */}
+      <div className="text-center mb-14">
+        <motion.span
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="inline-block px-8 py-3 bg-gradient-to-r from-pink-400 to-fuchsia-400 text-white font-bold text-lg rounded-full shadow-lg uppercase tracking-wider animate-pulse"
+        >
+          #GlowWithAura
+        </motion.span>
+        <p className="text-gray-500 mt-3">Join the movement. Elevate your confidence. Experience the Lonz Flawls Aura difference.</p>
+      </div>
+    </main>
+  );
+}
