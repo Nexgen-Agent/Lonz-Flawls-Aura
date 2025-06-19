@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function ContactPage() {
   return (
@@ -10,15 +11,28 @@ export default function ContactPage() {
       </div>
 
       <section className="z-10 w-full max-w-2xl mx-auto text-center">
-        <h1 className="text-5xl md:text-6xl font-black tracking-tight text-pink-700 drop-shadow-lg mb-4 font-serif fade-in-up">
+        <motion.h1
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-5xl md:text-6xl font-black tracking-tight text-pink-700 drop-shadow-lg mb-4 font-serif"
+        >
           Contact <span className="text-fuchsia-500">Lonz Flawls Aura</span>
-        </h1>
-        <p className="text-lg md:text-xl text-gray-700 mb-10 fade-in-up delay-100">
-          Questions, compliments, or collaboration ideas? We’d love to hear from you. Reach out and let’s glow together.
-        </p>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.12 }}
+          className="text-lg md:text-xl text-gray-700 mb-10"
+        >
+          Questions, compliments, you. Reach out and let’s glow together.
+        </motion.p>
 
-        <form
-          className="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-pink-100 p-8 md:p-12 space-y-7 text-left fade-in-up delay-200"
+        <motion.form
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.22 }}
+          className100-8 md:p-12 space-y-7 text-left"
           autoComplete="off"
           tabIndex={0}
         >
@@ -65,43 +79,24 @@ export default function ContactPage() {
           </div>
           <button
             type="submit"
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-400 to-fuchsia-500 text-white font-bold text-lg shadow-lg hover:from-fuchsia-400 hover:to-pink-600 transition-all focus:outline-none focus:ring-2 focus:ring-fuchsia-300 active:scale-98"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-400 to-fuchsia-500 text-white font-bold text-lg shadow-lg hover:from-fuchsia-400 hover:to-pink-600 transition-all focus:outline-none focus:ring-2 focus:ring-fuchsia-300"
           >
             Send Message
           </button>
-        </form>
+        </motion.form>
 
-        <div className="mt-10 flex flex-col items-center fade-in-up delay-300">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.32 }}
+          className="mt-10 flex flex-col items-center"
+        >
           <span className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-pink-400 to-fuchsia-400 text-white font-semibold shadow-lg tracking-wide uppercase text-sm mb-1 animate-pulse">
             #GlowWithAura
           </span>
           <span className="text-xs text-gray-500">We reply within 24 hours on weekdays.</span>
-        </div>
+        </motion.div>
       </section>
-
-      {/* Animations */}
-      <style jsx>{`
-        .fade-in-up {
-          opacity: 0;
-          transform: translateY(32px);
-          animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-        }
-        .fade-in-up.delay-100 {
-          animation-delay: 0.12s;
-        }
-        .fade-in-up.delay-200 {
-          animation-delay: 0.22s;
-        }
-        .fade-in-up.delay-300 {
-          animation-delay: 0.32s;
-        }
-        @keyframes fadeInUp {
-          to {
-            opacity: 1;
-            transform: none;
-          }
-        }
-      `}</style>
     </main>
   );
 }
