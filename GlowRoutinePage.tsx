@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function GlowRoutinePage() {
   return (
@@ -8,22 +9,37 @@ export default function GlowRoutinePage() {
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       >
-        <div className="absolute top-[-10%] left-1/2 transform -translate-x-1/2 w-[70vw] h-[70vw] bg-pink-200 opacity-25 rounded-full blur-3xl" />
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] bg-pink-200 opacity-25 rounded-full blur-3xl" />
         <div className="absolute bottom-[-8%] right-[-8%] w-[35vw] h-[35vw] bg-fuchsia-200 opacity-20 rounded-full blur-3xl" />
       </div>
 
       <section className="z-10 w-full max-w-3xl mx-auto">
-        <h1 className="text-5xl md:text-6xl font-black text-center tracking-tight text-pink-700 drop-shadow-lg mb-7 font-serif fade-in-up">
+        <motion.h1
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-5xl md:text-6xl font-black text-center tracking-tight text-pink-700 drop-shadow-lg mb-7 font-serif"
+        >
           Daily Glow Routine <span aria-hidden>✨</span>
-        </h1>
+        </motion.h1>
 
-        <p className="text-xl md:text-2xl text-center text-gray-700 leading-relaxed mb-10 fade-in-up delay-100">
+        <motion.p
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.12 }}
+          className="text-xl md:text-2xl text-center text-gray-700 leading-relaxed mb-10"
+        >
           The Lonz Flawls Aura glow routine is crafted for every skin tone and body type. Experience gentle, powerful healing and hydration—restoring your natural radiance, morning and night.
-        </p>
+        </motion.p>
 
-        <div className="space-y-8 fade-in-up delay-200">
+        <div className="space-y-8">
           {/* Morning Routine */}
-          <div className="bg-white/90 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-pink-100 transition-all hover:shadow-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.24 }}
+            className="bg-white/90 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-pink-100 transition-all hover:shadow-2xl"
+          >
             <h2 className="text-2xl font-bold text-pink-600 mb-3 font-serif">🌞 Morning Routine</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-800 text-lg">
               <li>
@@ -39,9 +55,14 @@ export default function GlowRoutinePage() {
                 Apply SPF (if exposed to sunlight)
               </li>
             </ul>
-          </div>
+          </motion.div>
           {/* Night Routine */}
-          <div className="bg-white/90 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-pink-100 transition-all hover:shadow-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.36 }}
+            className="bg-white/90 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-pink-100 transition-all hover:shadow-2xl"
+          >
             <h2 className="text-2xl font-bold text-pink-600 mb-3 font-serif">🌙 Night Routine</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-800 text-lg">
               <li>
@@ -57,44 +78,25 @@ export default function GlowRoutinePage() {
                 Drink 2 cups of water before sleep <span aria-label="water" role="img">💧</span>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Download Link */}
-        <div className="text-center mt-12 fade-in-up delay-300">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.48 }}
+          className="text-center mt-12"
+        >
           <a
             href="/files/LonzGlowRoutine.pdf"
             download
-            className="inline-block bg-gradient-to-r from-pink-500 to-fuchsia-500 text-white px-8 py-4 rounded-2xl hover:from-fuchsia-500 hover:to-pink-600 transition-all text-xl font-semibold shadow-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-300"
+            className="inline-block bg-gradient-to-r from-pink-500 to-fuchsia-500 text-white px-8 py-4 rounded-2xl hover:from-fuchsia-500 hover:to-pink-600 transition-all text-xl font-semibold shadow-lg"
           >
             Download Glow Routine PDF
           </a>
-        </div>
+        </motion.div>
       </section>
-
-      {/* Animations */}
-      <style jsx>{`
-        .fade-in-up {
-          opacity: 0;
-          transform: translateY(32px);
-          animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-        }
-        .fade-in-up.delay-100 {
-          animation-delay: 0.12s;
-        }
-        .fade-in-up.delay-200 {
-          animation-delay: 0.24s;
-        }
-        .fade-in-up.delay-300 {
-          animation-delay: 0.36s;
-        }
-        @keyframes fadeInUp {
-          to {
-            opacity: 1;
-            transform: none;
-          }
-        }
-      `}</style>
     </main>
   );
 }
